@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fareena S Rafiya | Portfolio</title>
+
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* Reset & Global */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; background: #0d0d14; color: #f5f5f5; scroll-behavior: smooth; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+a:hover { color: #ff77b7; }
+
+/* Canvas background */
+canvas#particles { position: fixed; top:0; left:0; width:100%; height:100%; z-index:0; }
+
+/* Navigation */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: rgba(13,13,20,0.95); position: fixed; top: 0; width: 100%; z-index: 1000; backdrop-filter: blur(10px); box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+nav h1 { color: #ff77b7; font-weight: 700; font-size: 1.5rem; }
+nav ul { display: flex; list-style: none; transition: 0.3s; }
+nav ul li { margin-left: 15px; }
+nav ul li a { color: #f5f5f5; font-weight: 500; transition: 0.3s; }
+nav ul li a:hover, nav ul li a.active { color: #ff77b7; }
+
+/* Hamburger menu for mobile */
+nav .hamburger { display: none; flex-direction: column; cursor: pointer; }
+nav .hamburger div { width: 25px; height: 3px; background: #ff77b7; margin: 4px 0; transition: 0.3s; }
+
+/* Hero Section */
+header { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #1a1a2e, #0d0d14); position: relative; z-index: 1; padding: 0 15px; }
+header h2 { font-size: 2.2rem; color: #ff77b7; margin-bottom: 10px; animation: float 6s ease-in-out infinite; }
+header p { font-size: 1rem; color: #ccc; max-width: 100%; }
+
+/* Sections */
+section { max-width: 95%; margin: 60px auto; padding: 30px 15px; background: linear-gradient(135deg, #4b6cb7, #182848); border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.7); opacity: 0; transform: translateY(20px); animation: fadeInUp 1s forwards; position: relative; z-index:1; }
+section h2 { color: #ff77b7; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center; }
+section h2 i { margin-right: 10px; color: #ff77b7; }
+section p { color: #f0f0f0; line-height: 1.6; margin-bottom: 15px; }
+
+/* Skills */
+.skills-list { display: flex; flex-wrap: wrap; justify-content: center; }
+.skills-list span { background: linear-gradient(45deg, #ffb3d9, #a18cd1); color: #0d0d14; padding: 10px 15px; margin: 6px; border-radius: 25px; font-weight: 600; transition: 0.3s; opacity: 0; transform: translateY(10px); animation: fadeInUp 0.5s forwards; }
+.skills-list span:hover { transform: scale(1.05) rotate(-2deg); box-shadow: 0 0 15px #ff77b7; }
+
+/* Projects Grid */
+.projects { display: grid; grid-template-columns: 1fr; gap: 15px; }
+.project-card { background: linear-gradient(135deg, #2c2c54, #1e1e3f); padding: 15px; border-radius: 15px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.7); animation: float 5s ease-in-out infinite; }
+.project-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 25px #ff77b7; }
+
+/* Footer */
+footer { text-align: center; padding: 30px 0; background: #1a1a2e; color: #aaa; margin-top: 50px; box-shadow: 0 -4px 15px rgba(0,0,0,0.5); z-index:1; position: relative; }
+
+/* Animations */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
+
+/* Mobile Menu */
+@media(max-width:768px){
+  nav ul { flex-direction: column; position: fixed; top: 65px; right: -100%; width: 200px; background: rgba(13,13,20,0.95); padding: 15px; border-radius: 10px; transition: 0.3s; }
+  nav ul.show { right: 10px; }
+  nav .hamburger { display: flex; }
+}
+
+/* Landscape / Rotated Mobile (menu visible) */
+@media (orientation: landscape) {
+  nav ul { flex-direction: row !important; position: static !important; width: auto !important; background: none !important; padding: 0 !important; border-radius: 0 !important; display: flex !important; }
+  nav .hamburger { display: none !important; }
+  nav ul li { margin-left: 15px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+  <h1>Fareena S R</h1>
+  <div class="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header>
+  <h2>Welcome to My Portfolio</h2>
+  <p>Student • Python Developer • Problem Solver | Exploring Generative AI</p>
+</header>
+
+<section id="about">
+  <h2><i class="fas fa-user"></i> About Me</h2>
+  <p>Hello! I'm Fareena S Rafiya, a B.Tech student passionate about technology, problem solving, and learning new skills. I specialize in Python, communication, and critical thinking, with a focus on creative solutions.</p>
+</section>
+
+<section id="skills">
+  <h2><i class="fas fa-lightbulb"></i> Skills</h2>
+  <div class="skills-list">
+    <span>Communication</span>
+    <span>Python</span>
+    <span>Problem Solving</span>
+    <span>Critical Thinking</span>
+    <span>Presentation Skills</span>
+    <span>Collaboration</span>
+  </div>
+</section>
+
+<section id="education">
+  <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+  <p><strong>Schooling:</strong> ST. FRANCIS XAVIER GIRLS HIGH SCHOOL (LKG-10)</p>
+  <p><strong>College:</strong> SRI CHAITANYA TECHNO SCHOOL (11 & 12)</p>
+  <p><strong>B.Tech:</strong> New Ebenezer Institute of Technology</p>
+</section>
+
+<section id="projects">
+  <h2><i class="fas fa-rocket"></i> Projects</h2>
+  <div class="projects">
+    <div class="project-card"><h3>Generative AI</h3><p>Completed course and small projects using AI models.</p></div>
+    <div class="project-card"><h3>Python Projects</h3><p>Problem-solving and automation scripts using Python.</p></div>
+    <div class="project-card"><h3>Coming Soon</h3><p>More projects under development.</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2><i class="fas fa-envelope"></i> Contact</h2>
+  <p>Email: <a href="mailto:fareena1410@gmail.com">fareena1410@gmail.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/fareena-s-2b3170386">Click Here</a></p>
+</section>
+
+<footer>
+  <p>© 2025 Fareena S Rafiya</p>
+</footer>
+
+<script>
+// Scroll Spy
+const sections = document.querySelectorAll('section');
+const menuLinks = document.querySelectorAll('nav ul li a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 80;
+    if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+  });
+  menuLinks.forEach(link => { link.classList.remove('active'); if(link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+});
+
+// Mobile Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const navUl = document.querySelector('nav ul');
+hamburger.addEventListener('click', () => { navUl.classList.toggle('show'); });
+
+// Particle Background
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particlesArray = [];
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Particle {
+  constructor() { this.x = Math.random()*canvas.width; this.y = Math.random()*canvas.height; this.size=Math.random()*3+1; this.speedX=Math.random()*1-0.5; this.speedY=Math.random()*1-0.5; this.color='rgba(255,119,183,0.7)'; }
+  update() { this.x+=this.speedX; this.y+=this.speedY; if(this.x<0||this.x>canvas.width) this.speedX*=-1; if(this.y<0||this.y>canvas.height) this.speedY*=-1; }
+  draw() { ctx.fillStyle=this.color; ctx.shadowColor='#ff77b7'; ctx.shadowBlur=5; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill(); }
+}
+
+function initParticles() { particlesArray=[]; for(let i=0;i<80;i++) particlesArray.push(new Particle()); }
+function connectParticles() { for(let a=0;a<particlesArray.length;a++){ for(let b=a;b<particlesArray.length;b++){ let dx=particlesArray[a].x-particlesArray[b].x; let dy=particlesArray[a].y-particlesArray[b].y; let distance=Math.sqrt(dx*dx+dy*dy); if(distance<120){ ctx.strokeStyle=`rgba(255,119,183,${1-distance/120})`; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(particlesArray[a].x,particlesArray[a].y); ctx.lineTo(particlesArray[b].x,particlesArray[b].y); ctx.stroke(); }}}}
+function animateParticles(){ ctx.clearRect(0,0,canvas.width,canvas.height); particlesArray.forEach(p=>{p.update();p.draw();}); connectParticles(); requestAnimationFrame(animateParticles);}
+window.addEventListener('resize', ()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; initParticles();});
+initParticles(); animateParticles();
+</script>
+
+</body>
+</html>
